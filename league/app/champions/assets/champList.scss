@@ -1,0 +1,56 @@
+.list-champion-main{
+    border: 3px solid blue ;
+    max-width: 90%;
+    margin: auto;
+    .article-buttons-list{
+        border-bottom: 3px solid blue;
+        display: flex;
+        gap: 0.5em;
+        align-content: center;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        font-size: 3em;
+        height: 4em;
+        margin: auto;
+        justify-content: center;
+        h2{
+            color: white;
+        }
+        .list-buttons-main{
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            .button-search-parameters{
+                height: 3em;
+                min-width: 7em; 
+            }
+        }
+       
+    }
+}
+
+
+.list-champion{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 2rem;
+}
+.list-champion-map{
+    margin: 3em 0;
+    .champion-short-summary{
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        flex-basis: 15%;
+        text-align: center;
+        align-items: center;
+        p{
+            font-size: 0.8em;
+        }
+    }
+}
+
