@@ -1,15 +1,18 @@
-import '../../mainLayout.scss'
-import './assets/champDetails.scss'
-import ChampSummaryDetails from "./importChampDetails"
-import Header from "@/app/header/header"
+import "../../mainLayout.scss";
+import "./assets/champDetails.scss";
+import ChampSummaryDetails from "./importChampDetails";
+import ChampSummaryDetails2 from "./importChampDetailsFix";
 
-export default function ChampionSummary({params}: { params: { champion: string };}){
-    return(
+export default function ChampionSummary({
+  params,
+}: {
+  params: { champion: string };
+}) {
+  return (
     <>
-    <Header></Header>
-    <main className="main-champion-long-summary">
-       <ChampSummaryDetails champion={{params}}/>
-       
-    </main>
-    </>)
+      <main className="main-champion-long-summary">
+        <ChampSummaryDetails2 champion={{ params }} />
+      </main>
+    </>
+  );
 }
