@@ -1,6 +1,6 @@
 import "../../mainLayout.scss";
 import "./assets/champDetails.scss";
-import ChampSummaryDetails from "./importChampDetails";
+
 import ChampSummaryDetails2 from "./importChampDetailsFix";
 
 export default function ChampionSummary({

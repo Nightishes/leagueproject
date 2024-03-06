@@ -71,7 +71,7 @@ export default async function ChampSummaryDetails2({ champion }) {
                   return (
                     <>
                       <ul key={answerChampDetails.stats + stat[0]}>
-                        <ol>
+                        <ol className="stats-grouping-ol">
                           {stat[0]}
                           <div>
                             <p>{stat[1].flat}</p>
