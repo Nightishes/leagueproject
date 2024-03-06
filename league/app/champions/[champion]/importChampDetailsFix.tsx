@@ -56,19 +56,7 @@ export default async function ChampSummaryDetails2({ champion }) {
               {Object.entries<any>(answerChampDetails.stats)
                 .filter(
                   (item) =>
-                    item.includes(
-                      "health" ||
-                        "healthRegen" ||
-                        "mana" ||
-                        "manaRegen" ||
-                        "armor" ||
-                        "magicResistance" ||
-                        "attackDamage" ||
-                        "movespeed" ||
-                        "criticalStrikeDamage" ||
-                        "attackSpeed" ||
-                        "attackRange"
-                    ) ||
+                    item.includes("health") ||
                     item.includes("mana") ||
                     item.includes("manaRegen") ||
                     item.includes("armor") ||
