@@ -20,111 +20,127 @@ interface champResponse {
 }
 
 export default async function ChampSummaryDetails2({ champion }) {
-  const answerChampDetails = await queryChampDetails({ champion });
-
-  console.log(queryChampDetails);
-  console.log(champion);
-  console.log(answerChampDetails);
+  const answerChampDetails = await queryChampDetails(champion);
+  const statsNeeded = [
+    "health",
+    "healthRegen",
+    "mana",
+    "manaRegen",
+    "armor",
+    "magicResistance",
+    "attackDamage",
+    "movespeed",
+    "criticalStrikeDamage",
+    "attackSpeed",
+    "attackRange",
+  ];
 
   return (
     <>
-      {Object.values<any>(answerChampDetails).map((champion) => {
-        return (
-          <>
-            <article>
-              <section className="lore-name-champion">
-                <h2>{champion.name}</h2>
-                <h3>{champion.title}</h3>
-                {/* <Image
-                  width={607}
-                  height={358}
-                  src={"`${champion.skins[0].splashPath}`"}
-                  alt={champion.name}
-                ></Image>
-                <p>{champion.lore}</p> */}
-              </section>
-              <section className="section-stats-info-skills-champ">
-                <p>Character stats: </p>
-                <div className="stats-info-skills-champ">
-                  {/* <div className="champ-stats-div">
-                    {Object.entries<any>(champion.stats).map((stat) => {
-                      return (
-                        <>
-                          <ul key={champion.stats + stat[0]}>
-                            <ol>{stat[0]}</ol>
-                            {Object.keys(stat[1]).map((specificStat) => {
-                              return (
-                                <>
-                                  <ol key={`${stat[1]}` + `${specificStat}`}>
-                                    {" "}
-                                    {specificStat} : {stat[1][specificStat]}
-                                  </ol>
-                                </>
-                              );
-                            })}
-                          </ul>
-                        </>
-                      );
-                    })}
-                  </div> */}
-                  {/* <div className="champ-info-div">
-                    {Object.keys(champion.attributeRatings).map((infoChamp) => {
-                      return (
-                        <ul key={`info + ${infoChamp}`}>
-                          {infoChamp}: {champion.attributeRatings[infoChamp]} /
-                          5
-                        </ul>
-                      );
-                    })}
-                  </div> */}
-                  {/* <div className="champion-passive-div">
-                    {Object.keys(champion.abilities).map((ability) => {
-                      return <>{ability}</>;
-                    })}
-                  </div> */}
-
-                  {/* <div>
-                        <p>Spell n°1 : {champion.spells[0].name}</p>  
+      <article>
+        <section className="lore-name-champion">
+          <h2>{answerChampDetails.name}</h2>
+          <h3>{answerChampDetails.title}</h3>
+          <Image
+            width={607}
+            height={358}
+            src={`${answerChampDetails.skins[0].splashPath}`}
+            alt={answerChampDetails.name}
+          ></Image>
+          <p>{answerChampDetails.lore}</p>
+        </section>
+        <section className="section-stats-info-skills-champ">
+          <p>Character stats: </p>
+          <div className="stats-info-skills-champ">
+            <div className="champ-stats-div">
+              {Object.entries<any>(answerChampDetails.stats)
+                .filter(
+                  (item) =>
+                    item.includes(
+                      "health" ||
+                        "healthRegen" ||
+                        "mana" ||
+                        "manaRegen" ||
+                        "armor" ||
+                        "magicResistance" ||
+                        "attackDamage" ||
+                        "movespeed" ||
+                        "criticalStrikeDamage" ||
+                        "attackSpeed" ||
+                        "attackRange"
+                    ) ||
+                    item.includes("mana") ||
+                    item.includes("manaRegen") ||
+                    item.includes("armor") ||
+                    item.includes("magicResistance") ||
+                    item.includes("attackDamage") ||
+                    item.includes("movespeed") ||
+                    item.includes("criticalStrikeDamage") ||
+                    item.includes("attackSpeed") ||
+                    item.includes("attackRange")
+                )
+                .map((stat) => {
+                  return (
+                    <>
+                      <ul key={answerChampDetails.stats + stat[0]}>
+                        <ol>
+                          {stat[0]}
+                          <div>
+                            <p>{stat[1].flat}</p>
+                            <p>{stat[1].perLevel}</p>
+                          </div>
+                        </ol>
+                      </ul>
+                    </>
+                  );
+                })}
+            </div>
+            {/* <div className="champ-info-div">
+              {Object.keys(answerChampDetails.attributeRatings).map(
+                (infoChamp) => {
+                  return (
+                    <ul key={`info + ${infoChamp}`}>
+                      {infoChamp}:{" "}
+                      {answerChampDetails.attributeRatings[infoChamp]} / 5
+                    </ul>
+                  );
+                }
+              )}
+            </div> */}
+            <div className="champion-abilities-div">
+              {Object.values(answerChampDetails.abilities).map((ability) => {
+                return (
+                  <>
+                    <div key={ability[0].name}>
+                      <p>{ability[0].name}</p>
+                      <Image
+                        alt={ability[0].name}
+                        width={48}
+                        height={48}
+                        src={ability[0].icon}
+                      ></Image>
+                      <p>{ability[0].effects[0].description}</p>
                     </div>
-                    <div>
-                        <p>Spell n°2 : {champion.spells[1].name}</p>
-                    </div>
-                    <div>
-                        <p>Spell n°3 : {champion.spells[2].name}</p>
-                    </div>
-                    <div>
-                        <p>Spell n°4 : {champion.spells[3].name}</p>
-                    </div> */}
-                </div>
-              </section>
-              <section>
-                {/* {champion.allytips.map((tip:string)=>{
-                        return(<p key={`tip + ${tip}`}>{tip}</p>)
-                    })}
-                    {champion.enemytips.map((tip:string)=>{
-                        return(<p key={`tip + ${tip}`}>{tip}</p>)
-                    })}
-                     {champion.tags.map((tag:string)=>{
-                        return(<p key={`tag + ${tag}`}>{tag}</p>)
-                    })} */}
-              </section>
-            </article>
-          </>
-        );
-      })}
+                  </>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      </article>
     </>
   );
 }
 
-export async function queryChampDetails({ champion }): Promise<champResponse> {
-  let pointerChampion = Object.values(champion.params);
+export async function queryChampDetails(
+  champion: string
+): Promise<champResponse> {
   return (
     await fetch(
-      `http://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/champions/${pointerChampion}.json`,
+      `http://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/champions/${champion}.json`,
       { next: { revalidate: 60 } }
     )
   )
     .json()
-    .then((result) => result.data)
     .catch(console.error);
 }
