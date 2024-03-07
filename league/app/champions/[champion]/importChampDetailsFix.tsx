@@ -107,7 +107,41 @@ export default async function ChampSummaryDetails2({ champion }) {
                         height={48}
                         src={ability[0].icon}
                       ></Image>
-                      <p>{ability[0].effects[0].description}</p>
+                      {ability[0].effects.map((descriptionSkill) => {
+                        return (
+                          <p
+                            key={
+                              ability[0] + ability[0].effects.descriptionSkill
+                            }
+                          >
+                            {descriptionSkill.description}
+                          </p>
+                        );
+                      })}
+                      {Object.entries<any>(ability[0].cooldown)
+                        .filter((item) => item.includes("modifiers"))
+                        .map((currentCooldown) => {
+                          return (
+                            <div key={ability[0] + [currentCooldown[0]]}>
+                              {Object.values<any>(currentCooldown[1]).map(
+                                (singleCooldown) => {
+                                  return (
+                                    <ul
+                                      key={
+                                        ability[0] +
+                                        currentCooldown[0] +
+                                        [singleCooldown]
+                                      }
+                                    >
+                                      <p> {singleCooldown.values}</p>
+                                    </ul>
+                                  );
+                                }
+                              )}
+                            </div>
+                          );
+                        })}
+                      {/* <p>{ability[0].notes}</p> */}
                     </div>
                   </>
                 );
