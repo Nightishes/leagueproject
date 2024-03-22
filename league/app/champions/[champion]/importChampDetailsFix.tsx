@@ -70,12 +70,14 @@ export default async function ChampSummaryDetails2({ champion }) {
                 .map((stat) => {
                   return (
                     <>
-                      <ul key={answerChampDetails.stats + stat[0]}>
+                      <ul key={stat[0] + answerChampDetails.name}>
                         <ol className="stats-grouping-ol">
-                          {stat[0]}
-                          <div>
-                            <p>{stat[1].flat}</p>
-                            <p>{stat[1].perLevel}</p>
+                          <p> {stat[0]}</p>
+                          <div className="stat-flat-level-div">
+                            <p> At lv 1: {stat[1].flat} </p>
+                            {stat[1].perLevel != 0 && (
+                              <p> Per level: {stat[1].perLevel}</p>
+                            )}
                           </div>
                         </ol>
                       </ul>
@@ -83,28 +85,19 @@ export default async function ChampSummaryDetails2({ champion }) {
                   );
                 })}
             </div>
-            {/* <div className="champ-info-div">
-              {Object.keys(answerChampDetails.attributeRatings).map(
-                (infoChamp) => {
-                  return (
-                    <ul key={`info + ${infoChamp}`}>
-                      {infoChamp}:{" "}
-                      {answerChampDetails.attributeRatings[infoChamp]} / 5
-                    </ul>
-                  );
-                }
-              )}
-            </div> */}
             <div className="champion-abilities-div">
               {Object.values(answerChampDetails.abilities).map((ability) => {
                 return (
                   <>
-                    <div key={ability[0].name}>
+                    <div
+                      key={ability[0].name}
+                      className="champion-ability-single-div"
+                    >
                       <p>{ability[0].name}</p>
                       <Image
                         alt={ability[0].name}
-                        width={48}
-                        height={48}
+                        width={96}
+                        height={96}
                         src={ability[0].icon}
                       ></Image>
                       {ability[0].effects.map((descriptionSkill) => {
@@ -118,30 +111,48 @@ export default async function ChampSummaryDetails2({ champion }) {
                           </p>
                         );
                       })}
-                      {Object.entries<any>(ability[0].cooldown)
-                        .filter((item) => item.includes("modifiers"))
-                        .map((currentCooldown) => {
-                          return (
-                            <div key={ability[0] + [currentCooldown[0]]}>
-                              {Object.values<any>(currentCooldown[1]).map(
-                                (singleCooldown) => {
-                                  return (
-                                    <ul
-                                      key={
-                                        ability[0] +
-                                        currentCooldown[0] +
-                                        [singleCooldown]
-                                      }
-                                    >
-                                      <p> {singleCooldown.values}</p>
-                                    </ul>
-                                  );
+
+                      {ability[0].cooldown != null &&
+                        Object.entries<any>(ability[0].cooldown)
+                          .filter((item) => item.includes("modifiers"))
+                          .map((currentCooldown) => {
+                            return (
+                              <div
+                                key={
+                                  ability[0] +
+                                  answerChampDetails.name +
+                                  answerChampDetails.title
                                 }
-                              )}
-                            </div>
-                          );
-                        })}
-                      {/* <p>{ability[0].notes}</p> */}
+                              >
+                                {Object.values<any>(currentCooldown[1]).map(
+                                  (singleCooldown) => {
+                                    console.log(
+                                      typeof singleCooldown.values[0]
+                                    );
+                                    return (
+                                      <ul
+                                        key={
+                                          ability[0] +
+                                          answerChampDetails.name +
+                                          [singleCooldown]
+                                        }
+                                      >
+                                        Cooldown :{" "}
+                                        {singleCooldown.values.join("/")}
+                                      </ul>
+                                    );
+                                  }
+                                )}
+                              </div>
+                            );
+                          })}
+                      {ability[0].speed != null && (
+                        <p>Ability speed time : {ability[0].speed}</p>
+                      )}
+                      {ability[0].width != null && (
+                        <p>Ability width : {ability[0].width}</p>
+                      )}
+                      <p>Additional notes : {ability[0].notes}</p>
                     </div>
                   </>
                 );

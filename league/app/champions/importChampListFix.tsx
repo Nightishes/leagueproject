@@ -27,7 +27,7 @@ export default async function ChampList2() {
           <>
             <div
               className="champion-short-summary"
-              key={champion.key + champion.name}
+              key={champion.key + champion.name + champion.id}
             >
               <Link href={`/champions/${champion.name}`}>
                 <Image
@@ -39,7 +39,7 @@ export default async function ChampList2() {
                 <p>{champion.name}</p>
                 {Object.keys(champion.info).map((infoChamp) => {
                   return (
-                    <p key={`statistics + ${infoChamp}`}>
+                    <p key={`statistics + ${infoChamp} + ${champion.name}`}>
                       {infoChamp}: {champion.info[infoChamp]} / 10
                     </p>
                   );

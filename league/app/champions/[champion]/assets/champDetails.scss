@@ -1,27 +1,8 @@
 .main-champion-long-summary {
   margin: 4em;
 
-  h2,
-  h3 {
-    color: white;
-  }
-
-  h2 {
-    font-size: 5em;
-  }
-
-  h3 {
-    font-size: 3em;
-  }
-
   h3::first-letter {
     text-transform: capitalize;
-  }
-
-  ul,
-  p {
-    color: white;
-    font-size: 1.5em;
   }
 
   p::first-letter,
@@ -54,22 +35,27 @@
     flex-direction: column;
     gap: 1em;
     align-items: flex-start;
+    ul {
+      display: flex;
+      flex-basis: 34%;
+      justify-content: flex-start;
+    }
     .champ-stats-div {
       display: flex;
       flex-wrap: wrap;
       flex-direction: row;
       justify-content: space-between;
-      ul {
-        display: flex;
-        flex-basis: 34%;
-        justify-content: flex-start;
-      }
+      gap: 3em;
+
       .stats-grouping-ol {
         display: flex;
         gap: 5em;
         width: 5em;
         justify-content: space-between;
         align-items: center;
+        p {
+          min-width: 7em;
+        }
       }
     }
     .champ-info-div {
@@ -80,5 +66,18 @@
         flex-basis: 15%;
       }
     }
+  }
+
+  .champion-abilities-div {
+    display: flex;
+    flex-direction: column;
+    gap: 5em;
+    margin: 5em 0;
+  }
+
+  .champion-ability-single-div {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
   }
 }
