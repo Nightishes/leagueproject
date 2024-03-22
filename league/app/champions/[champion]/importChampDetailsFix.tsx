@@ -147,7 +147,10 @@ export default async function ChampSummaryDetails2({ champion }) {
                             );
                           })}
                       {ability[0].speed != null && (
-                        <p>Ability speed time : {ability[0].speed}</p>
+                        <p>Ability travel speed time : {ability[0].speed}</p>
+                      )}
+                      {ability[0].castTime != null && (
+                        <p>Ability cast Time : {ability[0].castTime}</p>
                       )}
                       {ability[0].width != null && (
                         <p>Ability width : {ability[0].width}</p>
