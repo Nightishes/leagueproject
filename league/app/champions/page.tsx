@@ -45,7 +45,7 @@ export default function ChampionList() {
             <SearchbarName onQuery={setSharedState} />
           </section>
           <section className="list-champion-map">
-            <Suspense>
+            <Suspense fallback={<h2>Loading...</h2>}>
               <ChampList2 sharedState={sharedState} />
             </Suspense>
           </section>

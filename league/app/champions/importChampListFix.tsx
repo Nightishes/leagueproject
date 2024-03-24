@@ -11,9 +11,7 @@ export default async function ChampList2({ sharedState }) {
 
   let filteredList = championList;
   if (sharedState != "") {
-    filteredList.filter((item) =>
-      item.name.toLowerCase().includes(sharedState)
-    );
+    filteredList.filter((item) => item.toLowerCase().includes(sharedState));
   }
   // const filteredList = championList.filter((filter) => {
   //   if (sharedState === "") {
