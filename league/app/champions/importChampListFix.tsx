@@ -9,15 +9,21 @@ export default async function ChampList2({ sharedState }) {
   // console.log(champions);
   const championList = Object.values<any>(champions);
 
-  const filteredList = championList.filter((filter) => {
-    if (sharedState === "") {
-      return filter;
-    } else {
-      filter.includes(sharedState);
-      return filter;
-    }
-  });
-  console.log(typeof filteredList);
+  let filteredList = championList;
+  if (sharedState != "") {
+    filteredList.filter((item) =>
+      item.name.toLowerCase().includes(sharedState)
+    );
+  }
+  // const filteredList = championList.filter((filter) => {
+  //   if (sharedState === "") {
+  //     return filter;
+  //   } else {
+  //     filter.includes(sharedState);
+  //     return filter;
+  //   }
+  // });
+  // console.log(typeof filteredList);
   return (
     <ul className="list-champion">
       {filteredList.map((champion) => {
