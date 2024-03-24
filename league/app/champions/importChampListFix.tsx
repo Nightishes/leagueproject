@@ -17,12 +17,19 @@ interface ChampListResponse {
   };
 }
 
-export default async function ChampList2() {
+export default async function ChampList2({ sharedState }) {
   const champions = await queryChampList();
-
+  const championList = Object.values<any>(champions);
+  const filteredList = championList.filter((filter) => {
+    if (sharedState === "") {
+      return filter;
+    } else {
+      return filter.text.toLowerCase().includes(sharedState);
+    }
+  });
   return (
     <ul className="list-champion">
-      {Object.values<any>(champions).map((champion) => {
+      {filteredList.map((champion) => {
         return (
           <>
             <div

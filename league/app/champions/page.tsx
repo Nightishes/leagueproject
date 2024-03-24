@@ -2,8 +2,11 @@
 import "./assets/champList.scss";
 import ChampList2 from "./importChampListFix";
 import SearchbarName from "../searchbar/searchbarName";
+import { useState } from "react";
 
 export default function ChampionList() {
+  const [sharedState, setSharedState] = useState("");
+
   return (
     <>
       <main>
@@ -39,10 +42,10 @@ export default function ChampionList() {
                 None
               </button>
             </div>
-            <SearchbarName />
+            <SearchbarName onQuery={setSharedState} />
           </section>
           <section className="list-champion-map">
-            <ChampList2 />
+            <ChampList2 sharedState={sharedState} />
           </section>
         </article>
       </main>
