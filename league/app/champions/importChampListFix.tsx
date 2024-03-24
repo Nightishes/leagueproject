@@ -1,32 +1,23 @@
 import Image from "next/image";
 import Link from "next/link";
 
-interface ChampListResponse {
-  [name: string]: {
-    version: string;
-    id: string;
-    key: string;
-    name: string;
-    title: string;
-    blurb: string;
-    info: unknown;
-    image: unknown;
-    tags: unknown[];
-    partype: string;
-    stats: unknown;
-  };
-}
+import queryChampList from "./queryChampionList";
 
 export default async function ChampList2({ sharedState }) {
   const champions = await queryChampList();
+  console.log({ sharedState });
+  // console.log(champions);
   const championList = Object.values<any>(champions);
+
   const filteredList = championList.filter((filter) => {
     if (sharedState === "") {
       return filter;
     } else {
-      return filter.text.toLowerCase().includes(sharedState);
+      filter.includes(sharedState);
+      return filter;
     }
   });
+  console.log(typeof filteredList);
   return (
     <ul className="list-champion">
       {filteredList.map((champion) => {
@@ -58,16 +49,4 @@ export default async function ChampList2({ sharedState }) {
       })}
     </ul>
   );
-}
-
-async function queryChampList(): Promise<ChampListResponse> {
-  return (
-    await fetch(
-      "https://ddragon.leagueoflegends.com/cdn/14.4.1/data/en_US/champion.json",
-      { next: { revalidate: 60 } }
-    )
-  )
-    .json()
-    .then((result) => result.data)
-    .catch(console.error);
 }

@@ -7,13 +7,18 @@ export default function SearchbarName({ onQuery }) {
     //convert input text to lower case
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
-    onQuery(e.target.value);
+    onQuery(inputText);
   };
 
   return (
     <div className="search">
       <label htmlFor="site-search"> Search by name:</label>
-      <input type="search" id="site-search" onInput={inputHandler} />
+      <input
+        type="search"
+        id="site-search"
+        onChange={inputHandler}
+        value={inputText ?? ""}
+      />
     </div>
   );
 }
