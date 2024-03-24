@@ -126,7 +126,6 @@ export default async function ChampSummaryDetails2({ champion }) {
                               >
                                 {Object.values<any>(currentCooldown[1]).map(
                                   (singleCooldown) => {
-                                    console.log(singleCooldown.values[0]);
                                     return (
                                       <ul
                                         key={

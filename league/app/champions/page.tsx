@@ -1,6 +1,7 @@
+"use client";
 import "./assets/champList.scss";
-import ChampList from "./importChampList";
 import ChampList2 from "./importChampListFix";
+import SearchbarName from "../searchbar/searchbarName";
 
 export default function ChampionList() {
   return (
@@ -38,6 +39,7 @@ export default function ChampionList() {
                 None
               </button>
             </div>
+            <SearchbarName />
           </section>
           <section className="list-champion-map">
             <ChampList2 />
