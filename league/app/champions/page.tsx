@@ -4,9 +4,10 @@ import ChampList2 from "./importChampListFix";
 import SearchbarName from "../searchbar/searchbarName";
 import { useState } from "react";
 import { Suspense } from "react";
+
 export default function ChampionList() {
   const [sharedState, setSharedState] = useState("");
-
+  console.log(sharedState);
   return (
     <>
       <main>

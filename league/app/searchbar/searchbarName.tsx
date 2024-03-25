@@ -1,22 +1,26 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import "./assets/searchbar.scss";
 
 export default function SearchbarName({ onQuery }) {
   const [inputText, setInputText] = useState("");
+  useEffect(() => {
+    onQuery(inputText);
+  });
   let inputHandler = (e) => {
     //convert input text to lower case
+    // e.preventDefault();
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
-    onQuery(inputText);
   };
-
+  console.log(inputText);
   return (
-    <div className="search">
+    <div className="searchbar-general">
       <label htmlFor="site-search"> Search by name:</label>
       <input
         type="search"
         id="site-search"
-        onChange={inputHandler}
+        onInput={inputHandler}
         value={inputText ?? ""}
       />
     </div>
