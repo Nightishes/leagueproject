@@ -8,11 +8,10 @@ export default function SearchbarName({ onQuery }) {
     onQuery(inputText);
   });
   let inputHandler = (e) => {
-    //convert input text to lower case
-    // e.preventDefault();
     var lowerCase = e.target.value.toLowerCase();
     setInputText(lowerCase);
   };
+
   console.log(inputText);
   return (
     <div className="searchbar-general">

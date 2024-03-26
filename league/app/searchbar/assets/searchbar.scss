@@ -10,3 +10,14 @@
 label {
   color: white;
 }
+
+.list-buttons-main {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  .button-search-parameters {
+    min-height: 3em;
+    min-width: 6em;
+    font-size: 14px;
+  }
+}

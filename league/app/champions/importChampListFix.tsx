@@ -2,7 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import queryChampList from "./queryChampionList";
 
-export default async function ChampList2({ sharedState }) {
+export default async function ChampList2({ sharedState }, { sharedStateTag }) {
   const champions = await queryChampList();
   // console.log({ sharedState });
   // console.log(champions);
@@ -13,8 +13,6 @@ export default async function ChampList2({ sharedState }) {
     filteredList = filteredList.filter((item) =>
       item.name.toLowerCase().includes(sharedState)
     );
-  } else {
-    filteredList = filteredList;
   }
 
   return (

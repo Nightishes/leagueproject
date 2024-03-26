@@ -1,26 +1,29 @@
-header{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: baseline;
-    border-bottom: 2px solid black;
-    padding: 3em 6em;    
-    background: rgb(2,0,36);
-    background: radial-gradient(circle, rgba(2,0,36,1) 95%, rgba(81,81,99,1) 100%);
+header {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: 2px solid black;
+  padding: 3em 6em;
+  background: radial-gradient(
+    circle,
+    rgba(2, 0, 36, 1) 95%,
+    rgba(81, 81, 99, 1) 100%
+  );
 }
 
-h1{
-    font-size: 4em;
+h1 {
+  font-size: 4em;
 }
 
-a{
-    text-decoration: none;
-    color: white;
+a {
+  text-decoration: none;
+  color: white;
 }
-ul{
-    font-size: 2em;
-    display: flex;
-    gap: 5%;
-    justify-content: flex-end;
+ul {
+  font-size: 2em;
+  display: flex;
+  gap: 5%;
+  justify-content: flex-end;
 }
