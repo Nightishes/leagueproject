@@ -12,7 +12,6 @@ export default function SearchbarName({ onQuery }) {
     setInputText(lowerCase);
   };
 
-  console.log(inputText);
   return (
     <div className="searchbar-general">
       <label htmlFor="site-search"> Search by name:</label>

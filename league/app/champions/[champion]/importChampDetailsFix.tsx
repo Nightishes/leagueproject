@@ -21,19 +21,19 @@ interface champResponse {
 
 export default async function ChampSummaryDetails2({ champion }) {
   const answerChampDetails = await queryChampDetails(champion);
-  const statsNeeded = [
-    "health",
-    "healthRegen",
-    "mana",
-    "manaRegen",
-    "armor",
-    "magicResistance",
-    "attackDamage",
-    "movespeed",
-    "criticalStrikeDamage",
-    "attackSpeed",
-    "attackRange",
-  ];
+  // const statsNeeded = [
+  //   "health",
+  //   "healthRegen",
+  //   "mana",
+  //   "manaRegen",
+  //   "armor",
+  //   "magicResistance",
+  //   "attackDamage",
+  //   "movespeed",
+  //   "criticalStrikeDamage",
+  //   "attackSpeed",
+  //   "attackRange",
+  // ];
 
   return (
     <>

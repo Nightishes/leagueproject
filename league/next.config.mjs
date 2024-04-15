@@ -20,6 +20,12 @@ const nextConfig = {
         port: "",
         pathname: "/latest/**",
       },
+      {
+        protocol: "https",
+        hostname: "raw.communitydragon.org",
+        port: "",
+        pathname: "/**",
+      },
     ],
   },
 };

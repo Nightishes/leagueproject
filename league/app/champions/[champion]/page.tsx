@@ -1,4 +1,3 @@
-import "../../mainLayout.scss";
 import "./assets/champDetails.scss";
 import ChampSummaryDetails2 from "./importChampDetailsFix";
 
