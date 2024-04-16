@@ -5,8 +5,9 @@ import Link from "next/link";
 export default async function ExportItemList() {
   const itemList = await queryItemList();
 
+  // const arrayListCriteria = ["TURRET", "MINION"];
   const itemListTransfer = Object.values<any>(itemList).filter(
-    (item) => item.shop.purchasable === true
+    (item) => !item.rank.some("TURRET") && !item.rank.includes("MINION")
   );
 
   return (
