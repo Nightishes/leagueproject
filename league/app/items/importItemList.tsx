@@ -17,12 +17,12 @@ export default async function ExportItemList({ props }) {
       (item) =>
         // item.rank.toString().toLowerCase().includes(props.setSharedStateTag)
         // console.log(item.rank[0])
-        console.log(
-          item.rank[0] != undefined &&
-            item.rank.toString().toLowerCase() == props.sharedStateTag
-        )
-      // item.rank[0] != undefined &&
-      // item.rank[0].toString().toLowerCase() === props.sharedStateTag
+        // console.log(
+        //   item.rank[0] != undefined &&
+        //     item.rank[0].valueOf().toLowerCase().includes(props.sharedStateTag)
+        // )
+        item.rank[0] != undefined &&
+        item.rank[0].toString().toLowerCase() == props.sharedStateTag
     );
   }
 
@@ -45,7 +45,7 @@ export default async function ExportItemList({ props }) {
 
   return (
     <ul className="list-item">
-      {itemListTransfer.map((item) => {
+      {modulableList.map((item) => {
         return (
           <div key={item.name} className="item-short-summary">
             <Link href={`/items/${item.id}`}>
