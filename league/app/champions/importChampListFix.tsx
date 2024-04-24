@@ -7,22 +7,33 @@ export default async function ChampList2({ props }) {
   console.log(props.sharedStateTag);
   const championList = Object.values<any>(champions);
 
-  let filteredList = championList;
-  if (props.sharedState != "") {
+  function filterPerTags() {
+    filteredList = filteredList.filter(
+      (item) =>
+        item.tags[0].toLowerCase().includes(props.sharedStateTag) ||
+        (item.tags[1] &&
+          item.tags[1].toLowerCase().includes(props.sharedStateTag)) ||
+        (item.tags[2] &&
+          item.tags[2].toLowerCase().includes(props.sharedStateTag))
+    );
+  }
+
+  function filterPerName() {
     filteredList = filteredList.filter((item) =>
       item.name.toLowerCase().includes(props.sharedState)
     );
+  }
+
+  let filteredList = championList;
+  if (props.sharedState != "") {
+    filterPerName();
     if (props.sharedStateTag != "") {
-      filteredList = filteredList.filter((item) =>
-        item.tags[0].toLowerCase().includes(props.sharedStateTag)
-      );
+      filterPerTags();
     }
   }
 
   if (props.sharedStateTag != "") {
-    filteredList = filteredList.filter((item) =>
-      item.tags[0].toLowerCase().includes(props.sharedStateTag)
-    );
+    filterPerTags();
   }
   return (
     <ul className="list-champion">

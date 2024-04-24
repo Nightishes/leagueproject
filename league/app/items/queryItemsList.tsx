@@ -1,3 +1,4 @@
+"use server";
 interface ItemListResponse {
   name: string;
   id: number;

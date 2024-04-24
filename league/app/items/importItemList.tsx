@@ -2,13 +2,46 @@ import queryItemList from "./queryItemsList";
 import Image from "next/image";
 import Link from "next/link";
 
-export default async function ExportItemList() {
+export default async function ExportItemList({ props }) {
   const itemList = await queryItemList();
 
-  // const arrayListCriteria = ["TURRET", "MINION"];
-  const itemListTransfer = Object.values<any>(itemList).filter(
-    (item) => !item.rank.some("TURRET") && !item.rank.includes("MINION")
+  const arrayListCriteria = ["TURRET", "MINION"];
+  const itemListTransfer = Object.values<any>(itemList || {}).filter(
+    (item) => !item.rank.some((x) => arrayListCriteria.includes(x))
   );
+
+  console.log(props);
+  let modulableList = itemListTransfer;
+  function filterPerTags() {
+    modulableList = itemListTransfer.filter(
+      (item) =>
+        // item.rank.toString().toLowerCase().includes(props.setSharedStateTag)
+        // console.log(item.rank[0])
+        console.log(
+          item.rank[0] != undefined &&
+            item.rank.toString().toLowerCase() == props.sharedStateTag
+        )
+      // item.rank[0] != undefined &&
+      // item.rank[0].toString().toLowerCase() === props.sharedStateTag
+    );
+  }
+
+  function filterPerName() {
+    modulableList = itemListTransfer.filter((item) =>
+      item.name.toLowerCase().includes(props.sharedState)
+    );
+  }
+
+  if (props.sharedState != "") {
+    filterPerName();
+    if (props.sharedStateTag != "") {
+      filterPerTags();
+    }
+  }
+
+  if (props.sharedStateTag != "") {
+    filterPerTags();
+  }
 
   return (
     <ul className="list-item">
