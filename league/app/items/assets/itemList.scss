@@ -1,5 +1,5 @@
 .list-item-master {
-  border: 3px solid blue;
+  // border: 3px solid blue;
   max-width: 90%;
   margin: auto;
   .article-buttons-list {
@@ -14,6 +14,8 @@
     height: 4em;
     margin: auto;
     justify-content: center;
+    padding-bottom: 1em;
+    padding-top: 1em;
     .list-filter-searchbars {
       display: flex;
     }
@@ -26,6 +28,9 @@
     align-items: flex-start;
     gap: 2rem;
   }
+  .article-list-items {
+    padding-top: 2em;
+  }
   .item-short-summary {
     display: flex;
     flex-direction: column;
@@ -36,5 +41,22 @@
     p {
       font-size: 0.8em;
     }
+  }
+}
+
+.article-buttons-list {
+  border-bottom: 3px solid blue;
+  display: flex;
+  gap: 0.5em;
+  align-content: center;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
+  font-size: 3em;
+  height: 4em;
+  margin: auto;
+  justify-content: center;
+  .list-filter-searchbars {
+    display: flex;
   }
 }

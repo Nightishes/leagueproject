@@ -10,17 +10,10 @@ export default async function ExportItemList({ props }) {
     (item) => !item.rank.some((x) => arrayListCriteria.includes(x))
   );
 
-  console.log(props);
   let modulableList = itemListTransfer;
   function filterPerTags() {
     modulableList = itemListTransfer.filter(
       (item) =>
-        // item.rank.toString().toLowerCase().includes(props.setSharedStateTag)
-        // console.log(item.rank[0])
-        // console.log(
-        //   item.rank[0] != undefined &&
-        //     item.rank[0].valueOf().toLowerCase().includes(props.sharedStateTag)
-        // )
         item.rank[0] != undefined &&
         item.rank[0].toString().toLowerCase() == props.sharedStateTag
     );

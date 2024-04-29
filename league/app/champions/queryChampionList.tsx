@@ -1,3 +1,5 @@
+import { checkGameVersion } from "../page";
+
 interface ChampListResponse {
   [name: string]: {
     version: string;
@@ -15,9 +17,10 @@ interface ChampListResponse {
 }
 
 export default async function queryChampList(): Promise<ChampListResponse> {
+  const checkVersion = await checkGameVersion();
   return (
     await fetch(
-      "https://ddragon.leagueoflegends.com/cdn/14.7.1/data/en_US/champion.json",
+      `https://ddragon.leagueoflegends.com/cdn/${checkVersion[0]}/data/en_US/champion.json`,
       { next: { revalidate: 60 } }
     )
   )

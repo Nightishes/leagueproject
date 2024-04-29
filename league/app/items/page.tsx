@@ -24,7 +24,7 @@ export default function ItemsList() {
   return (
     <>
       <main className="list-item-master">
-        <article className="list-champion-main">
+        <article>
           <section className="article-buttons-list">
             <h2>Search by :</h2>
             <SearchbarTags
@@ -32,7 +32,7 @@ export default function ItemsList() {
             />
             <SearchbarName onQuery={setSharedState} />
           </section>
-          <section className="list-champion-map">
+          <section className="article-list-items">
             <Suspense fallback={<h2>Loading...</h2>}>
               <ExportItemList
                 props={{

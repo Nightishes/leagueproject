@@ -4,7 +4,6 @@ import queryChampList from "./queryChampionList";
 
 export default async function ChampList2({ props }) {
   const champions = await queryChampList();
-  console.log(props.sharedStateTag);
   const championList = Object.values<any>(champions);
 
   function filterPerTags() {

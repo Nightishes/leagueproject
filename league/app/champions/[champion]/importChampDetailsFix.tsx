@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 interface champResponse {
   id: string;
@@ -160,6 +161,12 @@ export default async function ChampSummaryDetails2({ champion }) {
                 );
               })}
             </div>
+            <Link
+              href={`https://leagueoflegends.fandom.com/wiki/${answerChampDetails.name}/LoL/Patch_history`}
+            >
+              {" "}
+              To see the last changes
+            </Link>
           </div>
         </section>
       </article>
